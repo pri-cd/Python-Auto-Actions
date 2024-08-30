@@ -3,9 +3,9 @@ name: Daily Automation
 on:
   schedule:
     - cron: '0 3 * * *' 
-workflow_dispatch:  # Allows manual triggering
-
-
+  push:  # Triggers on any push to the repository
+  workflow_dispatch:
+  
 jobs:
   run-script:
     runs-on: ubuntu-latest  
