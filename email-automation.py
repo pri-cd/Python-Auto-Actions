@@ -85,7 +85,7 @@ def getMotivation():
 
 # Function To Get News
 def getNews():
-  apikey = os.getenv('NEWS_API_KEY')
+  apiKey = os.getenv('NEWS_API_KEY')
   url = 'https://newsapi.org/v2/top-headlines'
   params = {
       'category': 'business',
