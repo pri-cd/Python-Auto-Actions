@@ -94,12 +94,14 @@ def getNews():
   response = requests.get(url, params=params)
   news = response.json()
   if news['status'] == 'ok' and news['totalResults'] > 0:
-    title = news['articles'][0]['title']
-    description = news['articles'][0]['description']
-    print(title, description)
-    return title, description
+    article = news['articles'][0]
+    title = article['title']
+    description = article['description']
+    url = article['url']  # Get the URL of the news article
+    print(title, description, url, sep=' | ')
+    return title, description, url
   else:
-    return "No news found", "There is no business news available at the moment."
+    return "No news found", "There is no business news available at the moment.", "None"
 
 
 # Functions To Get The Nifty, Sensex, Gold Prices!-
@@ -137,9 +139,9 @@ def sendMessage(body):
 def main():
   motivation = getMotivation()
   gold, nifty, sensex = getPrices()
-  title, description = getNews()
+  title, description, url = getNews()
 
-  msgBody = f"Quote: {motivation}\n\n\n" + "Markets ===================\n\n" + f"Nifty Price: {nifty}\nSensex Price: {sensex}\nGold Price: {gold}\n\n" + "Markets ===================\n" + f"Business News:\n{title}"
+  msgBody = f"Quote: {motivation}\n\n\n" + "Markets ===================\n\n" + f"Nifty Price: {nifty}\nSensex Price: {sensex}\nGold Price: {gold}\n\n" + "Markets ===================\n\n" + f"Business News:\n{title}\n{url}"
   # Send The Msg
   print(f"Response Code: {sendMessage(body=msgBody)}")
 
