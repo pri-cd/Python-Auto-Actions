@@ -139,7 +139,7 @@ def main():
   gold, nifty, sensex = getPrices()
   title, description = getNews()
 
-  msgBody = f"Quote: {motivation}\n" + "Markets ===================\n" + f"Nifty Price: {nifty}\nSensex Price: {sensex}\nGold Price: {gold}" + "Markets ===================" + f"Business News:\n{title}"
+  msgBody = f"Quote: {motivation}\n\n\n" + "Markets ===================\n\n" + f"Nifty Price: {nifty}\nSensex Price: {sensex}\nGold Price: {gold}\n\n" + "Markets ===================\n" + f"Business News:\n{title}"
   # Send The Msg
   print(f"Response Code: {sendMessage(body=msgBody)}")
 
