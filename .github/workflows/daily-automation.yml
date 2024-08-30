@@ -26,7 +26,7 @@ jobs:
 
 
       - name: Run script
-        run: python email-automation.py
+        run: python DailyNews.py
         env:
           NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}

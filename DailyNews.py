@@ -15,9 +15,6 @@ Send me using my Mail a Message Daily That Conatains!:
 
 import requests
 import os
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-import smtplib
 import yfinance as yf
 import random
 
@@ -86,6 +83,7 @@ def getMotivation():
 # Function To Get News
 def getNews():
   apiKey = os.getenv('NEWS_API_KEY')
+  print(apiKey, '<---------------------')
   url = 'https://newsapi.org/v2/top-headlines'
   params = {
       'category': 'business',
@@ -124,23 +122,16 @@ def getPrices():
   return getGoldPrices(), *getMarketPrices()
 
 
-# Function to send an email
-def sendMail(subject, body):
-  usrMail = os.getenv('USER_MAIL')
-  usrPass = os.getenv('USER_PASS')
-  print(usrMail, usrPass)
+def sendMessage(body):
+  bot_token = os.getenv('TG_CHAT_TOKEN')
+  chat_id = os.getenv('TG_CHAT_ID')
+  print(bot_token, '<---------------------')
+  print(chat_id, '<---------------------')
 
-  msg = MIMEMultipart()
-  msg['From'] = usrMail
-  msg['To'] = usrMail
-  msg['Subject'] = subject
-
-  msg.attach(MIMEText(body, 'plain'))
-
-  with smtplib.SMTP('smtp.gmail.com', 587) as server:
-    server.starttls()
-    server.login(usrMail, usrPass)
-    server.sendmail(usrMail, usrPass, msg.as_string())
+  url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
+  payload = {'chat_id': chat_id, 'text': body}
+  response = requests.post(url, data=payload)
+  return response.status_code
 
 
 def main():
@@ -148,7 +139,7 @@ def main():
   gold, nifty, sensex = getPrices()
   title, description = getNews()
 
-  email_body = f"""
+  msgBody = f"""
   Professional Motivational Quote: {motivation}
   
   Nifty Price: {nifty}
@@ -161,8 +152,8 @@ def main():
   Description: {description}
   """
 
-  # Send The Mail
-  sendMail("GIT AUTOMATION: Daily", email_body)
+  # Send The Msg
+  print(f"Response Code: {sendMessage(body=msgBody)}")
 
 
 if __name__ == "__main__":
