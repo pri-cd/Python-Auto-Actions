@@ -128,6 +128,7 @@ def getPrices():
 def sendMail(subject, body):
   usrMail = os.getenv('USER_MAIL')
   usrPass = os.getenv('USER_PASS')
+  print(usrMail, usrPass)
 
   msg = MIMEMultipart()
   msg['From'] = usrMail
