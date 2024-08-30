@@ -24,5 +24,10 @@ jobs:
           python -m pip install --upgrade pip  # Upgrades pip
           pip install -r requirements.txt  
 
+
       - name: Run script
-        run: python email-automation.py 
+        run: python email-automation.py
+        env:
+          USER_MAIL: ${{ secrets.USER_MAIL }}
+          USER_PASS: ${{ secrets.USER_PASS }}
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
