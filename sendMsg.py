@@ -27,9 +27,19 @@ def get_chat_ids(token):
 
 def send_telegram_message(body):
     bot_token = os.getenv('TG_CHAT_TOKEN')
-    chat_id = os.getenv('TG_CHAT_ID')
+    chat_ids = get_chat_ids(bot_token)
+
+    if not chat_ids:
+        raise Exception("No chat IDs available to send the message.")
 
     url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
-    payload = {'chat_id': chat_id, 'text': body}
-    response = requests.post(url, data=payload)
-    return response.status_code
+    response = None  # Initialize the response variable
+
+    for chat_id in chat_ids:
+        payload = {'chat_id': chat_id, 'text': body}
+        response = requests.post(url, data=payload)
+
+        if response.status_code != 200:
+            print(f"Failed to send message to chat ID: {chat_id}")
+
+    return response.status_code if response else None
