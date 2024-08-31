@@ -69,7 +69,7 @@ def getNews():
     print(title, description, url, sep=' | ')
     return title, description, url
   else:
-    return "No news found", "There is no business news available at the moment.", "None"
+    return "No Title", "No Description", "No URL"
 
 
 # Functions To Get The Nifty, Sensex, Gold Prices!-
