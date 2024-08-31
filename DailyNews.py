@@ -16,7 +16,34 @@ Send me using my Mail a Message Daily That Conatains!:
 import requests
 import os
 import yfinance as yf
-import quote
+import random
+
+
+# Get Quote!
+def getMotivationAPI(url=baseUrl, path='/quotes/random'):
+  completeUrl = f"{url}{path}"
+  print(completeUrl)
+  payload = {}
+  headers = {}
+
+  params = {
+      "maxLength": 300,
+      "minLength": 100,
+      "tags": "Sucess|Technology|Wisdom",
+      "author": "",
+      "query": 1,
+      "limit": 5
+  }
+  quotes = requests.request(method="GET",
+                            url=completeUrl,
+                            headers=headers,
+                            params=params,
+                            data=payload).json()
+
+  rdQuotes = random.choice(quotes)
+  quote = rdQuotes['content']
+  author = rdQuotes['author']
+  return quote, author
 
 
 # Function To Get News
@@ -76,11 +103,11 @@ def sendMessage(body):
 
 
 def main():
-  motivation = quote.getMotivationAPI()
+  quote, auth = getMotivationAPI()
   gold, nifty, sensex = getPrices()
   title, description, url = getNews()
 
-  msgBody = f"Quote: {motivation}\n\n\n" + "Markets ===================\n\n" + f"Nifty Price: {nifty}\nSensex Price: {sensex}\nGold Price: {gold}\n\n" + "Markets ===================\n\n" + f"Business News:\n{title}\n{url}"
+  msgBody = f"Quote: {quote}\n-{auth}\n\n\n" + "Markets ===================\n\n" + f"Nifty Price: {nifty}\nSensex Price: {sensex}\nGold Price: {gold}\n\n" + "Markets ===================\n\n" + f"Business News:\n{title}\n{url}"
   # Send The Msg
   print(f"Response Code: {sendMessage(body=msgBody)}")
 
