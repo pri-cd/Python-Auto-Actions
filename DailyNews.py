@@ -13,6 +13,8 @@ Send me using my Mail a Message Daily That Conatains!:
 3. For News use "newsapi" API
 '''
 
+baseUrl = "https://api.quotable.io"
+
 import requests
 import os
 import yfinance as yf
