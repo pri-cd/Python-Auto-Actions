@@ -35,11 +35,14 @@ def send_telegram_message(body):
     url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
     response = None  # Initialize the response variable
 
+    print(" ============= Starting Send!=============== ")
     for chat_id in chat_ids:
+        print(f"Sending message to chat ID: {chat_id}")
         payload = {'chat_id': chat_id, 'text': body}
         response = requests.post(url, data=payload)
 
         if response.status_code != 200:
             print(f"Failed to send message to chat ID: {chat_id}")
+    print(" ============= Ending Send!=============== ")
 
     return response.status_code if response else None
