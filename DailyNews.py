@@ -16,68 +16,7 @@ Send me using my Mail a Message Daily That Conatains!:
 import requests
 import os
 import yfinance as yf
-import random
-
-
-# Function to get a motivational quote
-def getMotivation():
-  """
-  response = requests.get('https://zenquotes.io/api/random')
-  data = response.json()
-  quot = data[0]['q'] + " -" + data[0]['a']
-  print(quot)
-  return quot
-  """
-  professional_quotes = [
-      "The only way to do great work is to love what you do. -Steve Jobs",
-      "Success is not the key to happiness. Happiness is the key to success. -Albert Schweitzer",
-      "The way to get started is to quit talking and begin doing. -Walt Disney",
-      "Success usually comes to those who are too busy to be looking for it. -Henry David Thoreau",
-      "Don’t be afraid to give up the good to go for the great. -John D. Rockefeller",
-      "If you really look closely, most overnight successes took a long time. -Steve Jobs",
-      "Opportunities don't happen. You create them. -Chris Grosser",
-      "Success is not in what you have, but who you are. -Bo Bennett",
-      "I find that the harder I work, the more luck I seem to have. -Thomas Jefferson",
-      "The only limit to our realization of tomorrow will be our doubts of today. -Franklin D. Roosevelt",
-      "Hard work beats talent when talent doesn’t work hard. -Tim Notke",
-      "Don’t watch the clock; do what it does. Keep going. -Sam Levenson",
-      "The future depends on what you do today. -Mahatma Gandhi",
-      "The way to achieve your own success is to be willing to help somebody else get it first. -Iyanla Vanzant",
-      "Success is not final; failure is not fatal: It is the courage to continue that counts. -Winston Churchill",
-      "Success is walking from failure to failure with no loss of enthusiasm. -Winston Churchill",
-      "The only place where success comes before work is in the dictionary. -Vidal Sassoon",
-      "Don’t be pushed around by the fears in your mind. Be led by the dreams in your heart. -Roy T. Bennett",
-      "Believe you can and you’re halfway there. -Theodore Roosevelt",
-      "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. -Steve Jobs",
-      "Success is the sum of small efforts, repeated day in and day out. -Robert Collier",
-      "You miss 100% of the shots you don’t take. -Wayne Gretzky",
-      "Success is not measured by what you accomplish, but by the opposition you have encountered, and the courage with which you have maintained the struggle against overwhelming odds. -Orison Swett Marden",
-      "Do not be embarrassed by your failures, learn from them and start again. -Richard Branson",
-      "You are never too old to set another goal or to dream a new dream. -C.S. Lewis",
-      "It is never too late to be what you might have been. -George Eliot",
-      "What you get by achieving your goals is not as important as what you become by achieving your goals. -Zig Ziglar",
-      "Success is liking yourself, liking what you do, and liking how you do it. -Maya Angelou",
-      "If you don’t design your own life plan, chances are you’ll fall into someone else’s plan. -Jim Rohn",
-      "Success is a journey, not a destination. The doing is often more important than the outcome. -Arthur Ashe",
-      "Act as if what you do makes a difference. It does. -William James",
-      "The successful warrior is the average man, with laser-like focus. -Bruce Lee",
-      "Don’t count the days, make the days count. -Muhammad Ali",
-      "Your time is limited, don’t waste it living someone else’s life. -Steve Jobs",
-      "You don’t have to be great to start, but you have to start to be great. -Zig Ziglar",
-      "Success is getting what you want, happiness is wanting what you get. -W. P. Kinsella",
-      "It does not matter how slowly you go, as long as you do not stop. -Confucius",
-      "Success is not how high you have climbed, but how you make a positive difference to the world. -Roy T. Bennett",
-      "The best way to predict the future is to create it. -Peter Drucker",
-      "Do not wait to strike till the iron is hot; but make it hot by striking. -William Butler Yeats",
-      "The only way to achieve the impossible is to believe it is possible. -Charles Kingsleigh",
-      "The only person you are destined to become is the person you decide to be. -Ralph Waldo Emerson",
-      "The difference between who you are and who you want to be is what you do. -Unknown",
-      "The secret of success is to do the common thing uncommonly well. -John D. Rockefeller Jr."
-  ]
-
-  quote = random.choice(professional_quotes)
-  print(quote)
-  return quote
+import quote
 
 
 # Function To Get News
@@ -137,7 +76,7 @@ def sendMessage(body):
 
 
 def main():
-  motivation = getMotivation()
+  motivation = quote.getMotivationAPI()
   gold, nifty, sensex = getPrices()
   title, description, url = getNews()
 
