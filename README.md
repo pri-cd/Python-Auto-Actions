@@ -37,3 +37,50 @@ Welcome to **Daily Automation**—your personal assistant for staying motivated,
    ```bash
    git clone https://github.com/yourusername/daily-automation.git
    cd daily-automation
+
+2. **Install Python dependencies:**
+   ```bash
+   pip install -r requirements.txt
+
+2. **Configure environment variables:**
+   - **`NEWS_API_KEY`**: Your NewsAPI key.
+   - **`TG_CHAT_TOKEN`**: Your Telegram bot API token.
+
+
+### Running Locally:
+   ```bash
+   python DailyNews.py
+   ```
+
+## 📁 Message Format
+   ```yaml
+   Quote: [Inspirational Quote]
+   - [Author]
+   
+   Markets ===================
+   
+   Nifty Price: [Nifty Price]
+   Sensex Price: [Sensex Price]
+   Gold Price: [Gold Price]
+   
+   Markets ===================
+   
+   Business News:
+   [News Title]
+   [News URL]
+   ```
+
+## 📁 Contribution: 
+- This is a personal project, but suggestions and contributions are always **welcome**!
+- Feel free to fork the repo, make changes, and submit a pull request.
+
+## 🙌 Acknowledgments:
+
+- **Quotable API**: For daily motivation.
+- **NewsAPI**: For the latest business news. (* Requires API key *)
+- **Yahoo Finance**: For stock and gold prices.
+- **Telegram API**: For message delivery.
+
+
+## Note: 
+- Thank you for checking out Daily Automation! I hope it makes your day a little brighter and more informed. 🌟
