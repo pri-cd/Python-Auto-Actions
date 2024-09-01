@@ -2,7 +2,7 @@
 
 Welcome to **Daily Automation**—your personal assistant for staying motivated, updated, and informed every day! This project is a delightful blend of technology and daily routines, fetching motivational quotes, stock market prices, gold prices, and the latest business news, and delivering them directly to your Telegram.
 
-![Daily Automation](https://images.unsplash.com/photo-1554168154-aca61592aabb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGJ1c2luZXNzfGVufDB8fHx8MTY5MzU1NDA1Mw&ixlib=rb-4.0.3&q=80&w=1080)  
+![Daily Automation](https://github.com/pri-cd/Python-Auto-Actions/blob/main/Automation.jpg)  
 *Stay motivated and informed, every day.*
 
 ## 🌟 Features
