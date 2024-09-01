@@ -43,8 +43,8 @@ Welcome to **Daily Automation**—your personal assistant for staying motivated,
    pip install -r requirements.txt
 
 2. **Configure environment variables:**
-   - **`NEWS_API_KEY`**: Your NewsAPI key.
-   - **`TG_CHAT_TOKEN`**: Your Telegram bot API token.
+- **`NEWS_API_KEY`**: Your NewsAPI key.
+- **`TG_CHAT_TOKEN`**: Your Telegram bot API token.
 
 
 ### Running Locally:
