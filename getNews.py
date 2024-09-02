@@ -4,6 +4,7 @@ import os
 
 def get_business_news():
     api_key = os.getenv('NEWS_API_KEY')
+    print(f"NEWS API-KEY: {api_key}")
     url = 'https://newsapi.org/v2/top-headlines'
 
     params = {'category': 'business', 'country': 'in', 'apiKey': api_key}
