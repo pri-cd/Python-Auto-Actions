@@ -1,4 +1,5 @@
 import requests
+import time
 import os
 
 
@@ -39,9 +40,9 @@ def send_telegram_message(body):
     for chat_id in chat_ids:
         print(f"Sending message to chat ID: {chat_id}")
         payload = {'chat_id': chat_id, 'text': body}
-        for datax in payload:
-            print(datax)
-            response = requests.post(url, data=datax)
+        response = requests.post(url, data=payload)
     print(" ============= Ending Send!=============== ")
 
+    # To Not overload The Telegram API(s).
+    time.sleep(1)
     return response.status_code if response else None

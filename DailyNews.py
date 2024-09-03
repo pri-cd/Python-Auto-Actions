@@ -3,7 +3,6 @@ from getNews import get_business_news
 from getPrices import get_market_prices, get_gold_price
 from sendMsg import send_telegram_message
 
-
 def prepareBody(quote, author, nifty, sensex, gold, news, newsUrl):
   # Constructing the message
   msg_body = [
@@ -22,7 +21,7 @@ def main():
   nifty_price, sensex_price = get_market_prices()
   news_title, news_description, news_url = get_business_news()
 
-  msg = prepareBody(quote=quote,
+  body = prepareBody(quote=quote,
                     author=author,
                     nifty=nifty_price,
                     sensex=sensex_price,
@@ -31,8 +30,10 @@ def main():
                     newsUrl=news_url)
 
   # Sending the message
-  response_code = send_telegram_message(msg)
-  print(f"Response Code: {response_code}")
+  for msg in body:
+    response_code = send_telegram_message(msg)
+    print(f"Response Code: {response_code}")
+    
 
 
 if __name__ == "__main__":
