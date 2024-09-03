@@ -96,7 +96,7 @@ def get_motivation_quote():
     params = {
         "maxLength": 300,
         "minLength": 100,
-        "tags": "Sucess|Technology|Wisdom",
+        "tags": "Sucess|Wisdom",
         "limit": 5
     }
 
