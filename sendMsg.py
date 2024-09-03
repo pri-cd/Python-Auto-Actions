@@ -40,6 +40,7 @@ def send_telegram_message(body):
         print(f"Sending message to chat ID: {chat_id}")
         payload = {'chat_id': chat_id, 'text': body}
         for datax in payload:
+            print(datax)
             response = requests.post(url, data=datax)
     print(" ============= Ending Send!=============== ")
 
