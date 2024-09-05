@@ -6,7 +6,7 @@ from sendMsg import send_telegram_message
 def prepareBody(quote, author, nifty, sensex, gold, news, newsUrl):
   # Constructing the message
   msg_body = [
-      f"Quote: {quote}\n-{author}",
+      f"Quote:\n{quote}\n-{author}",
       f"Nifty Price: {nifty}\nSensex Price: {sensex}\nGold Price: {gold}",
       f"Business News:\n{news}\n\n{newsUrl}"
   ]

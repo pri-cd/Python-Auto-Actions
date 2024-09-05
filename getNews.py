@@ -11,6 +11,7 @@ def get_business_news():
 
     response = requests.get(url, params=params)
     news = response.json()
+    print(news)
 
     if news['status'] == 'ok' and news['totalResults'] > 0:
         article = news['articles'][0]
