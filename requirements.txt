@@ -1,3 +1,5 @@
 requests
 yfinance
 pandas
+requests-html
+lxml_html_clean

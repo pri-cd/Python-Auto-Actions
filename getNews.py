@@ -1,20 +1,32 @@
+from time import sleep
 import requests
 import os
+from requests_html import HTMLSession
+
+gUrl = "https://news.google.com/home?hl=en-IN&gl=IN&ceid=IN:en"
 
 
 def get_business_news():
-    api_key = os.getenv('NEWS_API_KEY')
-    print(f"NEWS API-KEY: {api_key}")
-    url = 'https://newsapi.org/v2/top-headlines'
+    session = HTMLSession()
+    r = session.get(gUrl)
+    r.html.render(sleep=1, scrolldown=5)
 
-    params = {'category': 'business', 'country': 'in', 'apiKey': api_key}
+    #find all the articles by using inspect element and create blank list
+    articles = r.html.find('article')
+    newslist = []
 
-    response = requests.get(url, params=params)
-    news = response.json()
-    print(news)
+    for article in articles:
+        try:
+            newsItem = article.find('h3', first=True)
+            title = newsItem.text
+            link = newsItem.absoulte_links
 
-    if news['status'] == 'ok' and news['totalResults'] > 0:
-        article = news['articles'][0]
-        return article['title'], article['description'], article['url']
-    else:
-        return "No Title", "No Description", "No URL"
+            newslist.append({'Title': title, "Link": link})
+        except:
+            pass
+
+    print(newslist)
+
+
+if __name__ == "__main__":
+    get_business_news()
