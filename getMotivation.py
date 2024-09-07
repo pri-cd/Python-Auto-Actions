@@ -4,6 +4,7 @@ import random
     @brief: Gets A Random Quote From The Quotable API
     @credits: https://github.com/lukePeavey/quotable
 '''
+base_url = "https://api.quotable.io"
 
 
 # In Case API doesn't work- Utilise other Ways!-
@@ -89,16 +90,10 @@ def get_predefined_quote():
 
 
 def get_motivation_quote():
-    base_url = "https://api.quotable.io"
     path = '/quotes/random'
     complete_url = f"{base_url}{path}"
 
-    params = {
-        "maxLength": 300,
-        "minLength": 100,
-        "tags": "Sucess|Wisdom",
-        "limit": 5
-    }
+    params = {"maxLength": 300, "minLength": 100, "tags": "Sucess", "limit": 5}
 
     try:
         response = requests.get(complete_url, params=params)
@@ -111,3 +106,6 @@ def get_motivation_quote():
     except Exception as exp:
         print(f"Exception: {exp} Occured!")
         return get_predefined_quote()
+
+
+get_tags()
