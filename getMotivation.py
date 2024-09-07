@@ -106,6 +106,3 @@ def get_motivation_quote():
     except Exception as exp:
         print(f"Exception: {exp} Occured!")
         return get_predefined_quote()
-
-
-get_tags()
