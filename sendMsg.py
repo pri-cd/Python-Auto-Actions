@@ -26,7 +26,7 @@ def get_chat_ids_from_api(token):
 '''
 
 
-def send_telegram_message(body):
+def send_telegram_message(bodies):
     bot_token = os.getenv('TG_CHAT_TOKEN')
     chat_ids = get_chat_ids_from_api(bot_token)
     url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
@@ -39,13 +39,14 @@ def send_telegram_message(body):
     # Convert to a set to remove any potential duplicates
     chat_ids = list(set(chat_ids))
     print(f"Chat IDs- FINAL: {chat_ids}")
+    response = None
+    print(">>>>>>>>>> Starting Send >>>>>>>>>>")
+    for body in bodies:
+        for chat_id in chat_ids:
+            print(f"Sending message to chat ID: {chat_id}")
+            payload = {'chat_id': chat_id, 'text': body}
+            response = requests.post(url, data=payload)
+            time.sleep(1)
+    print(">>>>>>>>>> Ending Send >>>>>>>>>>")
 
-    print(" ============= Starting Send! =============== ")
-    for chat_id in chat_ids:
-        print(f"Sending message to chat ID: {chat_id}")
-        payload = {'chat_id': chat_id, 'text': body}
-        response = requests.post(url, data=payload)
-        time.sleep(1)
-    print(" ============= Ending Send! =============== ")
-
-    return response.status_code if response else None
+    return response

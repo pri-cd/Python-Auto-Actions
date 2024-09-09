@@ -31,9 +31,8 @@ def main():
                      newsUrl=news_url)
 
   # Sending the message
-  for msg in body:
-    response_code = send_telegram_message(msg)
-    print(f"Response Code: {response_code}")
+  response_code = send_telegram_message(body)
+  print(f"Response Code: {response_code}")
 
 
 if __name__ == "__main__":
