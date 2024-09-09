@@ -93,13 +93,14 @@ def get_motivation_quote():
     path = '/quotes/random'
     complete_url = f"{base_url}{path}"
 
-    params = {"maxLength": 300, "minLength": 100, "tags": "Sucess", "limit": 5}
+    params = {"maxLength": 300, "minLength": 100, "tags": "Success|Famous Quotes|", "limit": 5}
 
     try:
-        response = requests.get(complete_url, params=params)
+        response = requests.request(method="GET", url=complete_url, params=params)
         if response.status_code == 200:
             print(f"Response Code: {response.status_code}")
             quotes = response.json()
+            print(response.json())
             selected_quote = random.choice(quotes)
             return selected_quote['content'], selected_quote['author']
         else:
@@ -107,3 +108,6 @@ def get_motivation_quote():
     except Exception as exp:
         print(f"Exception: {exp} Occured!")
         return get_predefined_quote()
+
+
+get_motivation_quote()
