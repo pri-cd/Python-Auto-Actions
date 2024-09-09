@@ -98,6 +98,7 @@ def get_motivation_quote():
     try:
         response = requests.get(complete_url, params=params)
         if response.status_code == 200:
+            print(f"Response Code: {response.status_code}")
             quotes = response.json()
             selected_quote = random.choice(quotes)
             return selected_quote['content'], selected_quote['author']
